@@ -1,10 +1,5 @@
 use tauri_plugin_sql::{Migration, MigrationKind};
 
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
-
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     // Define database setup migrations
@@ -18,7 +13,14 @@ pub fn run() {
             price REAL
             );",
         kind: MigrationKind::Up,
-    }];
+    },
+        Migration{
+            version: 3,
+            description: "add image to product",
+            sql: "ALTER TABLE product ADD COLUMN image TEXT;",
+            kind: MigrationKind::Up,
+        }
+    ];
 
     tauri::Builder::default()
         .plugin(

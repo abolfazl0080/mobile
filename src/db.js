@@ -1,10 +1,10 @@
 import Database from "@tauri-apps/plugin-sql";
 
-async function createProduct(title, description, price) {
+async function createProduct(title, description, price, image) {
     const db = Database.load('sqlite:store.db')
     const result = (await db).execute(
-        "INSERT INTO product(title, description, price) VALUES ($1, $2, $3)",
-        [title, description, price]
+        "INSERT INTO product(title, description, price, image) VALUES ($1, $2, $3, $4)",
+        [title, description, price, image]
     )
     return result
 }
@@ -29,12 +29,12 @@ async function getOneProduct(id) {
       }
 }
 
-async function updateProduct(id, title, description, price) {
+async function updateProduct(id, title, description, price, image) {
       try {
         const db = await Database.load("sqlite:store.db");
         const result = await db.execute(
-            "UPDATE product SET title=$2, description=$3, price=$4 WHERE id = $1",
-            [id, title, description, price]
+            "UPDATE product SET title=$1, description=$2, price=$3, image=$4 WHERE id = $5",
+            [title, description, price, image, id]
         );
         return result
       } catch (error) {
