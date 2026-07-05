@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { createProduct, getAllProducts, updateProduct, deleteProduct } from './db';
+import { Link } from "react-router-dom";
 import "./Dashboard.css";
 
 function Dashboard() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Form State
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -76,7 +76,9 @@ function Dashboard() {
     <main className="app-container">
       <header className="store-header">
         <h1>🏪 Store Dashboard</h1>
-        <p>Natively managing your SQLite database inventory.</p>
+        <button>
+          <Link to="/">Home</Link>
+        </button>
       </header>
 
       <div className="store-layout">

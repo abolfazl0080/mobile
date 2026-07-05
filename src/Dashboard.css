@@ -25,6 +25,22 @@ body {
   margin-bottom: 2.5rem;
   border-bottom: 1px solid var(--border);
   padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.store-header button{
+  background: #005dd0;
+  color: white;
+  cursor: pointer;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+
+}
+
+.store-header button a{
+  text-decoration: none !important;
+  color: white;
 }
 
 .store-layout {
